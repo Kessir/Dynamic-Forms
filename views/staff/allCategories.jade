@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+    .row
+        .col-sm-3
+            include ../partials/sidebar
+        .col-sm-9
+            .main
+                h2 All Categories
+                hr
+                table.table.table-hover
+                    thead
+                        tr
+                            th Name
+                            th Description
+                            th Number of fields
+                            th
+                    tbody
+                        each category in categories
+                            tr
+                                td= category.title
+                                td= category.description
+                                td= category.fields.length
+                                td
+                                    a(href='/categories/#{category._id}', class='btn btn-small btn-success') Preview
+                                    a(href='/categories/#{category._id}/edit', class='btn btn-small') Edit

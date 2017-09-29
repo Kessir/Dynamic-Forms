@@ -1,0 +1,5 @@
+each field in category.fields
+  .form-group
+    label.col-sm-3.control-label(for='#{field.fieldID}')= field.title
+    .col-sm-7
+      input.form-control(type='#{field.inputType}', name='#{field.fieldID}', id='#{field.fieldID}', placeholder='#{field.description}', value='#{field.value || ""}')

@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+    .row
+        .col-sm-3
+            include ../partials/sidebar
+        .col-sm-9
+            .main
+                h2 Category: #{category.title}
+                hr
+                form.form-horizontal(id='signup-form')
+                    each field in category.fields
+                        .form-group
+                            label.col-sm-3.control-label(for='description')= field.title
+                            .col-sm-7
+                                input.form-control(type='#{field.inputType}', name='cat_desc', id='description', placeholder='Description')
+                    .form-group
+                        .col-sm-offset-3.col-sm-7
+                            button.btn.btn-success(disabled='disabled') Save

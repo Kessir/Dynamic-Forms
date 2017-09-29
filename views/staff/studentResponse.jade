@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+    .row
+        .col-sm-3
+            include ../partials/sidebar
+        .col-sm-9
+            .main
+                h2 Student: #{data.student.profile.name}
+                hr
+                each category in data.categories
+                    h3 #{category.title}
+                    table.table.table-hover
+                        thead
+                            tr
+                                th Field
+                                th Response
+                                th
+                        tbody
+                            each response in category.fields
+                                tr
+                                    td= response.title
+                                    td= response.value || "Not Provided"
+                                    td
+                a.btn.btn-primary(href='/responses/download/#{data.student._id}') Download as .CSV

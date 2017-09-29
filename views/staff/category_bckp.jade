@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+    .row
+        .col-sm-3
+            include ../partials/sidebar
+        .col-sm-9
+            .main
+                h2 Category: #{category.title}
+                hr
+                table.table.table-hover
+                    thead
+                        tr
+                            th Name
+                            th Description
+                            th Type
+                            th
+                    tbody
+                        each field in category.fields
+                            tr
+                                td= field.title
+                                td= field.description
+                                td= field.inputType
+                                td
+                                    a(href='/field/#{field._id}', class='btn btn-small') Edit

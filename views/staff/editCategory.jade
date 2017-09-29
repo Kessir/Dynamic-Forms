@@ -1,0 +1,71 @@
+extends ../layout
+
+block content
+  .row
+    .col-sm-3
+      include ../partials/sidebar
+    .col-sm-9
+      .main
+        h2 Edit Category : #{category.title}
+        hr
+        form.form-horizontal(id='category-form', method='POST', action='/categories/edit')
+            input(type='hidden', name='_csrf', value=_csrf)
+            .form-group
+                label.col-sm-3.control-label(for='title') Category title
+                .col-sm-7
+                    input.form-control(type='text', name='cat_title', id='title', placeholder='Title', autofocus, required, value='#{category.title}')
+            .form-group
+                label.col-sm-3.control-label(for='description') Category description
+                .col-sm-7
+                    input.form-control(type='text', name='cat_desc', id='description', placeholder='Description', value='#{category.description}')
+            .field
+                h4 Field 1
+                .form-group
+                    label.col-sm-3.control-label(for='title1') Title
+                    .col-sm-7
+                        input.form-control(type='text', name='field_title[]', id='title1', placeholder='Title', autofocus)
+                .form-group
+                    label.col-sm-3.control-label(for='description1') Description
+                    .col-sm-7
+                        input.form-control(type='text', name='field_desc[]', id='description1', placeholder='Description', autofocus)
+                .form-group
+                    label.col-sm-3.control-label(for='fieldType1') Field Type
+                    .col-sm-7
+                        select.form-control(name='field_type[]', id='fieldType1', autofocus)
+                            option(value='text') Text
+                            option(value='email') Email
+                            option(value='number') Numeric
+                            option(value='checkbox') Yes or No
+                            option(value='file') Document
+
+            .fields(id='fields-container')
+
+            .form-group
+                .col-sm-offset-3.col-sm-7
+                    a(href='#',id='add-field-button') Add field
+            .form-group
+                .col-sm-offset-3.col-sm-7
+                    button.btn.btn-success(type='submit')
+                        i.fa.fa-user-plus
+                        | Save
+
+  script(type='text/template', id='field-template')
+      .field
+          h4 Field {{counter}}
+          .form-group
+              label.col-sm-3.control-label(for='title{{counter}}') Title
+              .col-sm-7
+                  input.form-control(type='text', name='field_title[]', id='title{{counter}}', placeholder='Title', autofocus)
+          .form-group
+              label.col-sm-3.control-label(for='description{{counter}}') Description
+              .col-sm-7
+                  input.form-control(type='text', name='field_desc[]', id='description{{counter}}', placeholder='Description', autofocus)
+          .form-group
+              label.col-sm-3.control-label(for='fieldType{{counter}}') Field Type
+              .col-sm-7
+                  select.form-control(name='field_type[]', id='fieldType{{counter}}', autofocus)
+                      option(value='text') Text
+                      option(value='email') Email
+                      option(value='number') Numeric
+                      option(value='checkbox') Yes or No
+                      option(value='file') Document

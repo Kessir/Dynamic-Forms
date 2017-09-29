@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    h1 Student Data
+    hr
+    .row
+        .col-sm-12
+            h3 Please fill the information below
+            form.form-horizontal(id='category-form', method='POST', action='/responses/new')
+                input(type='hidden', name='_csrf', value=_csrf)
+                each category in categories
+                    h4= category.title
+                    include partials/category
+                .form-group
+                    .col-sm-offset-3.col-sm-7
+                        button.btn.btn-success.btn-lg Save
