@@ -1,0 +1,27 @@
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand"><img src="/img/logo.png" width="25px" class="img-responsive inline-block"/>Student Data</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <!--li(class=(title == 'Home') ? 'active' : undefined)-->
+        <!--  a(href='/') Home-->
+        <!--li(class=(title == 'Contact') ? 'active' : undefined)-->
+        <!--  a(href='/contact') Contact-->
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/login">Login</a></li>
+        <li><a href="/signup">Sign Up</a></li>
+        {# if logged in #}
+        <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle"><img src="gravatar.jpeg"/>&nbsp;<i class="caret"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="/account">My Account</a></li>
+            <li class="divider"></li>
+            <li><a href="/logout">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

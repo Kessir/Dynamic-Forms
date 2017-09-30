@@ -16,6 +16,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const expressValidator = require('express-validator');
 const sass = require('node-sass-middleware');
+const nunjucks = require('nunjucks')
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
@@ -40,11 +41,19 @@ mongoose.connection.on('error', () => {
 });
 
 /**
+ * Nunjucks template engine
+ */
+nunjucks.configure('views', {
+  autoescape: true,
+  express   : app
+});
+
+/**
  * Express configuration.
  */
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'njk');
 app.use(compression());
 app.use(sass({
   src: path.join(__dirname, 'public'),
